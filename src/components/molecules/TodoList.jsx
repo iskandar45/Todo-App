@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
-import { TodoContext } from "../contexts/todoContext"
-import Button from "./Button"
-import { actions } from "../store/actions"
+import { TodoContext } from "../../contexts/todoContext"
+import Button from "../atoms/Button"
+import { actions } from "../../store/actions"
 
 export default function TodoList() {
   const { todos, dispatch } = useContext(TodoContext)

@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
-import { TodoContext } from "../contexts/todoContext"
-import { actions } from "../store/actions"
+import { TodoContext } from "../../contexts/todoContext"
+import { actions } from "../../store/actions"
 
 export default function Form() {
   const { dispatch } = useContext(TodoContext)
