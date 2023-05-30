@@ -1,8 +1,14 @@
 import React, { useContext } from "react"
 import { TodoContext } from "../contexts/todoContext"
+import Button from "./Button"
+import { actions } from "../store/actions"
 
 export default function TodoList() {
-  const { todos } = useContext(TodoContext)
+  const { todos, dispatch } = useContext(TodoContext)
+
+  const handleDelete = (todoId) => {
+    dispatch({ type: actions.deleteTodo, payload: todoId })
+  }
 
   return (
     <>
@@ -12,7 +18,14 @@ export default function TodoList() {
           <p className="empty-todo">No Todos</p>
         ) : (
           todos.map((item, i) => {
-            return <li key={i}>{item.title}</li>
+            return (
+              <li key={i}>
+                <div>{item.title}</div>
+                <div>
+                  <Button onClick={() => handleDelete(item.id)}>Delete</Button>
+                </div>
+              </li>
+            )
           })
         )}
       </ul>
