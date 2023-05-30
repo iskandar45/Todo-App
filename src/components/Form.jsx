@@ -10,6 +10,7 @@ export default function Form() {
     const newTodo = {
       id: Date.now(),
       title: e.target[0].value,
+      completed: false,
     }
     dispatch({ type: actions.addTodo, payload: newTodo })
     e.target[0].value = ""
