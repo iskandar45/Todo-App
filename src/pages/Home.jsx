@@ -1,31 +1,25 @@
-import { useState } from "react"
+import React, { useState, createContext } from "react"
 import Form from "../components/Form"
 import TodoList from "../components/TodoList"
 
+export const TodoContext = createContext()
+
 export default function Home() {
   const [todos, setTodos] = useState([])
-  const [todo, setTodo] = useState("")
+  const [data, setData] = useState("")
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const newTodo = {
-      id: Date.now(),
-      title: event.target[0].value,
-    }
-
-    setTodos([...todos, newTodo])
-    event.target[0].value = ""
-    setTodo("")
+  const addTodo = () => {
+    setTodos([...todos, { id: Date.now(), title: data }])
   }
 
   return (
-    <>
+    <TodoContext.Provider value={{ data, setData, addTodo, todos }}>
       <div className="container">
         <h4>Todo App</h4>
-        <Form onSubmit={handleSubmit} todo={todo} setTodo={setTodo} />
+        <Form />
         <hr />
-        <TodoList items={todos} />
+        <TodoList />
       </div>
-    </>
+    </TodoContext.Provider>
   )
 }

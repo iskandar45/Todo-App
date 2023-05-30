@@ -1,10 +1,23 @@
-export default function Form({ onSubmit, todo, setTodo }) {
+import React, { useContext } from "react"
+import { TodoContext } from "../pages/Home"
+// import { TodoContext } from "../contexts/TodoContext"
+
+export default function Form() {
+  const { data, setData, addTodo } = useContext(TodoContext)
+
   const handleChange = (e) => {
-    setTodo(e.target.value)
+    setData(e.target.value)
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addTodo()
+    setData("")
+  }
+
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" value={todo} onChange={handleChange} />
+    <form onSubmit={handleSubmit}>
+      <input type="text" value={data} onChange={handleChange} />
       <button type="submit">Submit</button>
     </form>
   )

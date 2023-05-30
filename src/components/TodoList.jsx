@@ -1,14 +1,18 @@
-import React from "react"
+import React, { useContext } from "react"
+import { TodoContext } from "../pages/Home"
+// import { TodoContext } from "../contexts/TodoContext"
 
-export default function TodoList({ items }) {
+export default function TodoList() {
+  const { todos } = useContext(TodoContext)
+
   return (
     <>
       <h4>Todo</h4>
       <ul>
-        {items.length <= 0 ? (
+        {todos.length <= 0 ? (
           <p className="empty-todo">No Todos</p>
         ) : (
-          items.map((item, i) => <li key={i}>{item.title}</li>)
+          todos.map((item, i) => <li key={i}>{item.title}</li>)
         )}
       </ul>
     </>
