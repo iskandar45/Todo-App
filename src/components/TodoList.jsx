@@ -14,8 +14,6 @@ export default function TodoList() {
     dispatch({ type: actions.toggleTodo, payload: todoId })
   }
 
-  console.log(todos)
-
   return (
     <>
       <h4>Todo</h4>
@@ -25,21 +23,9 @@ export default function TodoList() {
         ) : (
           todos.map((item, i) => (
             <li key={i} onClick={() => handleToggle(item.id)}>
-              <div
-                style={
-                  item.completed
-                    ? { color: "red", fontStyle: "italic", textDecoration: "line-through" }
-                    : null
-                }
-              >
-                {item.title}
-              </div>
+              <div className={item.completed ? "completed" : "notCompleted"}>{item.title}</div>
               <div>
-                <Button
-                  style={
-                    item.completed ? { backgroundColor: "#1c871b" } : { backgroundColor: "#5d5dbd" }
-                  }
-                >
+                <Button className={item.completed ? "completed" : "notCompleted"}>
                   {item.completed ? "Done" : "Not Done"}
                 </Button>
                 <Button onClick={() => handleDelete(item.id)}>Delete</Button>
