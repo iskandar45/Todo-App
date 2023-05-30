@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import { TodoContext } from "../contexts/todoContext"
+import { actions } from "../store/actions"
 
 export default function Form() {
   const { dispatch } = useContext(TodoContext)
@@ -10,7 +11,7 @@ export default function Form() {
       id: Date.now(),
       title: e.target[0].value,
     }
-    dispatch({ type: "ADD_TODO", payload: newTodo })
+    dispatch({ type: actions.addTodo, payload: newTodo })
     e.target[0].value = ""
   }
 
