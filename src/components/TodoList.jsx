@@ -11,7 +11,9 @@ export default function TodoList() {
         {todos.length <= 0 ? (
           <p className="empty-todo">No Todos</p>
         ) : (
-          todos.map((item, i) => <li key={i}>{item.title}</li>)
+          todos.map((item, i) => {
+            return <li key={i}>{item.title}</li>
+          })
         )}
       </ul>
     </>
