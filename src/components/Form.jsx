@@ -8,7 +8,7 @@ export default function Form() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const value = e.target[0].value
-    if (value !== "") {
+    if (value.trim() !== "") {
       const newTodo = {
         id: Date.now(),
         title: value,
