@@ -3,9 +3,10 @@ import Form from "../components/Form"
 import TodoList from "../components/TodoList"
 import { TodoContext } from "../contexts/todoContext"
 import { todoReducer } from "../store/reducer"
+import { state } from "../store/initialState"
 
 export default function Home() {
-  const [todos, dispatch] = useReducer(todoReducer, [])
+  const [todos, dispatch] = useReducer(todoReducer, state)
 
   return (
     <TodoContext.Provider value={{ todos, dispatch }}>
