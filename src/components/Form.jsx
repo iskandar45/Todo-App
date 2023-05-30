@@ -7,13 +7,16 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newTodo = {
-      id: Date.now(),
-      title: e.target[0].value,
-      completed: false,
+    const value = e.target[0].value
+    if (value !== "") {
+      const newTodo = {
+        id: Date.now(),
+        title: value,
+        completed: false,
+      }
+      dispatch({ type: actions.addTodo, payload: newTodo })
+      e.target[0].value = ""
     }
-    dispatch({ type: actions.addTodo, payload: newTodo })
-    e.target[0].value = ""
   }
 
   return (
