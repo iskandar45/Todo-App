@@ -1,8 +1,7 @@
-import React, { useState, createContext } from "react"
+import React, { useState } from "react"
 import Form from "../components/Form"
 import TodoList from "../components/TodoList"
-
-export const TodoContext = createContext()
+import { TodoContext } from "../contexts/todoContext"
 
 export default function Home() {
   const [todos, setTodos] = useState([])
